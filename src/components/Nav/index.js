@@ -9,10 +9,15 @@ function Nav(props) {
         currentCategory,
     } = props;
 
+    const handleClick = (item) => {
+        console.log(item);
+        return item;
+      };
+
     // the useEffect hook triggers a re-render on a variable value change
-    useEffect(() => {
-        document.title = capitalizeFirstLetter(currentCategory.name);
-      }, [currentCategory]);
+    // useEffect(() => {
+    //     document.title = capitalizeFirstLetter(currentCategory.name);
+    //   }, [currentCategory]);
 
     return (
         <header className="flex-row px-1">
@@ -29,11 +34,11 @@ function Nav(props) {
                     </a>
                 </li>
                 <li>
-                    <span>Contact</span>
+                    <span onClick={() => handleClick('Contact')}>Contact</span>
                 </li>
                 {categories.map((category) => (
                 <li className={`mx-1 ${currentCategory.name === category.name && 'navActive'}`} key={category.name}>
-                    <span onClick={() => setCurrentCategory(category)}>
+                    <span onClick={() => {setCurrentCategory(category); }}>
                        {capitalizeFirstLetter(category.name)}
                     </span>
                </li>
