@@ -17,17 +17,26 @@ function App() {
   // The second item is a setter, which allows you to set the state to something else.
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
+  const [contactSelected, setContactSelected] = useState(false);
+
   return (
     <div>
         <Nav 
         categories={categories}
         setCurrentCategory={setCurrentCategory}
-        currentCategory={currentCategory}>
-        </Nav>
+        currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
+        ></Nav>
       <main>
-        <ContactForm></ContactForm>
-        <Gallery currentCategory={currentCategory}></Gallery>
-        <About></About>
+      {!contactSelected ? (
+        <>
+          <Gallery currentCategory={currentCategory}></Gallery>
+          <About></About>
+        </>
+      ) : (
+          <ContactForm></ContactForm>
+        )}
       </main> 
     </div>
   );
