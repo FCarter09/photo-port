@@ -12,24 +12,26 @@ const mockSetContactSelected = jest.fn();
 
 afterEach(cleanup);
 
-it('renders', () => {
-  render(<Nav
-    categories={categories}
-    setCurrentCategory={mockSetCurrentCategory}
-    currentCategory={mockCurrentCategory}
-    contactSelected={mockContactSelected}
-    setContactSelected={mockSetContactSelected}
-  />);
-})
-
-describe('Nav component renders', () => {
+describe('Nav component', () => {
   it('renders', () => {
-    render(<Nav />);
-  });
+    render(<Nav
+      categories={categories}
+      setCurrentCategory={mockSetCurrentCategory}
+      currentCategory={mockCurrentCategory}
+      contactSelected={mockContactSelected}
+      setContactSelected={mockSetContactSelected}
+    />);
+  })
 
-  it('matches snapshot', () => {
-    const { asFragment } = render(<Nav />);
-    
+  it('matches snapshot DOM node structure', () => {
+    const { asFragment } = render(<Nav
+      categories={categories}
+      setCurrentCategory={mockSetCurrentCategory}
+      currentCategory={mockCurrentCategory}
+      contactSelected={mockContactSelected}
+      setContactSelected={mockSetContactSelected}
+    />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 })
